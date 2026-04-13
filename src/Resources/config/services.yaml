@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    InSquare\OpendxpSeoBundle\SeoMetaGenerator\MetaGenerator:
+        arguments:
+            - '%in_square_opendxp_seo%'
+    InSquare\OpendxpSeoBundle\SeoMetaGenerator\DocumentSeoMetaGenerator: null
+    InSquare\OpendxpSeoBundle\SeoMetaGenerator\ObjectSeoMetaGenerator: null
