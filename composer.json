@@ -11,8 +11,15 @@
       "email": "wladyslaw.dudko@gmail.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/in-square/seo-bundle"
+    }
+  ],
   "require": {
-    "open-dxp/opendxp": "^1.0"
+    "open-dxp/opendxp": "^1.0",
+    "insquare/seo-bundle": "^1.0"
   },
   "autoload": {
     "psr-4": {
