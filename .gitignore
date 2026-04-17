@@ -5,3 +5,5 @@ vendor
 # PhpStorm / IDEA
 .idea
 .idea_modules
+
+/docs/tasks/

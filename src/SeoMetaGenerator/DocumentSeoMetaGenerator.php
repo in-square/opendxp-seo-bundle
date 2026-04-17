@@ -13,19 +13,24 @@ use OpenDxp\Tool;
 class DocumentSeoMetaGenerator
 {
     private MetaGenerator $seoMetaGenerator;
+    private HreflangResolver $hreflangResolver;
 
-    public function __construct(MetaGenerator $seoMetaGenerator)
+    public function __construct(MetaGenerator $seoMetaGenerator, HreflangResolver $hreflangResolver)
     {
         $this->seoMetaGenerator = $seoMetaGenerator;
+        $this->hreflangResolver = $hreflangResolver;
     }
 
     public function generate(Page|PageSnippet $page, bool $isNoIndex = false): void
     {
+        $alternateLinks = $this->hreflangResolver->resolveForDocument($page);
+
         $this->seoMetaGenerator
             ->setTitle($page->getTitle()) // @phpstan-ignore-line
             ->setDescription($page->getDescription()) // @phpstan-ignore-line
             ->setUrl($page->getUrl())
             ->setImage($this->prepareImage($page))
+            ->setAlternateLinks($alternateLinks)
             ->setIsNoIndex($isNoIndex)
             ->generate();
     }

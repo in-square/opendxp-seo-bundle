@@ -7,5 +7,12 @@ services:
     InSquare\OpendxpSeoBundle\SeoMetaGenerator\MetaGenerator:
         arguments:
             - '%in_square_opendxp_seo%'
+    InSquare\OpendxpSeoBundle\SeoMetaGenerator\HreflangResolver: null
+    InSquare\OpendxpSeoBundle\SeoMetaGenerator\AlternateSeoGenerator:
+        arguments:
+            - '@in_square_seo.builder'
+            - '@in_square_seo.tag_factory'
+        tags:
+            - { name: 'in_square_seo.generator', alias: 'alternate' }
     InSquare\OpendxpSeoBundle\SeoMetaGenerator\DocumentSeoMetaGenerator: null
     InSquare\OpendxpSeoBundle\SeoMetaGenerator\ObjectSeoMetaGenerator: null

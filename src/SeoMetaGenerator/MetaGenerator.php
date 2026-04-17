@@ -17,6 +17,10 @@ class MetaGenerator implements SeoMetaGeneratorInterface
     private ?string $url = null;
     private ?string $keywords = null;
     private ?string $image = null;
+    /**
+     * @var array<string, string>
+     */
+    private array $alternateLinks = [];
     private bool $isNoIndex = false;
 
     private string $thumbnailName;
@@ -39,6 +43,16 @@ class MetaGenerator implements SeoMetaGeneratorInterface
         $basic = $this->seoGeneratorProvider->get('basic');
         $basic->setTitle($this->title)
             ->setCanonical($this->url);
+
+        if ($this->seoGeneratorProvider->has('alternate')) {
+            $alternate = $this->seoGeneratorProvider->get('alternate');
+            if ($alternate instanceof AlternateSeoGenerator) {
+                $alternate->reset();
+                foreach ($this->alternateLinks as $hreflang => $href) {
+                    $alternate->setAlternateLink($href, $hreflang);
+                }
+            }
+        }
 
         if (!is_null($this->keywords)) {
             $basic->setKeywords($this->keywords);
@@ -109,6 +123,16 @@ class MetaGenerator implements SeoMetaGeneratorInterface
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @param array<string, string> $alternateLinks
+     */
+    public function setAlternateLinks(array $alternateLinks): self
+    {
+        $this->alternateLinks = $alternateLinks;
 
         return $this;
     }
