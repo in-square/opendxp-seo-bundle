@@ -1,9 +1,9 @@
 {
-  "name": "insquare/opendxp-seo-bundle",
+  "name": "in-square/opendxp-seo-bundle",
   "description": "Seo bundle for OpenDXP",
   "type": "opendxp-bundle",
   "keywords": ["opendxp", "seo", "opendxp-bundle", "opendxp-plugin"],
-  "homepage": "https://github.com/insquare/opendxp-seo-bundle",
+  "homepage": "https://github.com/in-square/opendxp-seo-bundle",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
@@ -19,7 +19,7 @@
   ],
   "require": {
     "open-dxp/opendxp": "^1.0",
-    "insquare/seo-bundle": "^1.0"
+    "in-square/seo-bundle": "^1.0"
   },
   "autoload": {
     "psr-4": {

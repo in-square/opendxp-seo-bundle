@@ -4,7 +4,7 @@ Seo package that allows you to complete metadata very quickly
 
 ## Installation
 ```
-composer require insquare/opendxp-seo-bundle
+composer require in-square/opendxp-seo-bundle
 ```
 
 in the `config/bundles.php` file add
