@@ -28,6 +28,7 @@ class DocumentSeoMetaGenerator
         $this->seoMetaGenerator
             ->setTitle($page->getTitle()) // @phpstan-ignore-line
             ->setDescription($page->getDescription()) // @phpstan-ignore-line
+            ->setKeywords($this->prepareKeywords($page))
             ->setUrl($page->getUrl())
             ->setImage($this->prepareImage($page))
             ->setAlternateLinks($alternateLinks)
@@ -53,5 +54,22 @@ class DocumentSeoMetaGenerator
         $thumbnail = $image->getThumbnail($this->seoMetaGenerator->getThumbnailName());
 
         return Tool::getHostUrl() . $thumbnail->getPath();
+    }
+
+    private function prepareKeywords(Page|PageSnippet $page): ?string
+    {
+        if (!$page->hasProperty('seo_keywords')) {
+            return null;
+        }
+
+        $keywords = $page->getProperty('seo_keywords');
+
+        if (!is_string($keywords)) {
+            return null;
+        }
+
+        $keywords = trim($keywords);
+
+        return '' === $keywords ? null : $keywords;
     }
 }

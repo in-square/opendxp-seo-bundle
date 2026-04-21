@@ -1,0 +1,13 @@
+opendxp:
+    properties:
+        predefined:
+            definitions:
+                f593ce3f-5dd2-4cdb-b1c4-986e7167ccf6:
+                    name: 'SEO keywords'
+                    description: 'Keywords used for the meta keywords tag.'
+                    key: seo_keywords
+                    type: text
+                    data: ''
+                    config: ''
+                    ctype: document
+                    inheritable: true

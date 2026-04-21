@@ -49,7 +49,9 @@ in base template add
 ```
 
 ### Document
-Just complete the fields in the SEO section and create (optional) a custom property named **meta_tag_image** with the asset for the document
+Just complete the fields in the SEO section and create (optional) a custom property named **meta_tag_image** with the asset for the document.
+
+If you want to provide keywords, use document property **seo_keywords** (text). This bundle also provides **seo_keywords** as a predefined property for documents.
 ![](docs/img/meta-tag-image-property.png)
 
 
