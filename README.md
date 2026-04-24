@@ -38,6 +38,17 @@ in_square_opendxp_seo:
         after: 'content after seo title'
 ```
 
+#### Hreflang x-default language
+By default, `x-default` points to the URL of OpenDXP `defaultLanguage`.
+You can override this behavior by setting a preferred language for `x-default`.
+If the configured language version does not exist for a given page/object, the bundle falls back to OpenDXP `defaultLanguage`.
+
+```yaml
+in_square_opendxp_seo:
+    hreflang:
+        x_default_language: 'en'
+```
+
 
 ## Usage
 

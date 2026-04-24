@@ -7,7 +7,9 @@ services:
     InSquare\OpendxpSeoBundle\SeoMetaGenerator\MetaGenerator:
         arguments:
             - '%in_square_opendxp_seo%'
-    InSquare\OpendxpSeoBundle\SeoMetaGenerator\HreflangResolver: null
+    InSquare\OpendxpSeoBundle\SeoMetaGenerator\HreflangResolver:
+        arguments:
+            $xDefaultLanguage: '%in_square_opendxp_seo.hreflang_x_default_language%'
     InSquare\OpendxpSeoBundle\SeoMetaGenerator\AlternateSeoGenerator:
         arguments:
             - '@in_square_seo.builder'

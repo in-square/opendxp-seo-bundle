@@ -23,6 +23,7 @@ class InSquareOpendxpSeoExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('in_square_opendxp_seo', $config);
+        $container->setParameter('in_square_opendxp_seo.hreflang_x_default_language', $config['hreflang']['x_default_language']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');

@@ -17,10 +17,13 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class HreflangResolver
 {
     private RequestStack $requestStack;
+    private ?string $xDefaultLanguage;
 
-    public function __construct(RequestStack $requestStack)
+    public function __construct(RequestStack $requestStack, ?string $xDefaultLanguage = null)
     {
         $this->requestStack = $requestStack;
+        $xDefaultLanguage = is_string($xDefaultLanguage) ? trim($xDefaultLanguage) : null;
+        $this->xDefaultLanguage = '' === $xDefaultLanguage ? null : $xDefaultLanguage;
     }
 
     /**
@@ -192,11 +195,19 @@ class HreflangResolver
      */
     private function appendXDefault(array $links): array
     {
+        if (null !== $this->xDefaultLanguage) {
+            $configuredKey = $this->normalizeHreflang($this->xDefaultLanguage);
+            if (isset($links[$configuredKey])) {
+                $links['x-default'] = $links[$configuredKey];
+
+                return $links;
+            }
+        }
+
         $defaultLanguage = Tool::getDefaultLanguage();
         if (null === $defaultLanguage) {
             return $links;
         }
-
         $defaultKey = $this->normalizeHreflang($defaultLanguage);
         if (isset($links[$defaultKey])) {
             $links['x-default'] = $links[$defaultKey];
